@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { Fragment } from "react";
 import {
   Breadcrumb,
   Layout,
@@ -8,14 +8,12 @@ import {
   Col,
   Card,
   Button,
-  Icon,
   DatePicker,
   TimePicker,
   Select,
-  Popover,
   Table,
   Popconfirm,
-  Divider
+  Divider,
 } from "antd";
 import "./App.css";
 
@@ -60,60 +58,44 @@ function App() {
   ];
   const columns = [
     {
-      title: '成员姓名',
-      dataIndex: 'name',
-      key: 'name',
-      width: '20%',
+      title: "成员姓名",
+      dataIndex: "name",
+      key: "name",
+      width: "20%",
       render: (text, record) => {
         if (record.editable) {
-          return (
-            <Input
-              value={text}
-              autoFocus
-              placeholder="成员姓名"
-            />
-          );
+          return <Input value={text} autoFocus placeholder="成员姓名" />;
         }
         return text;
       },
     },
     {
-      title: '工号',
-      dataIndex: 'workId',
-      key: 'workId',
-      width: '20%',
+      title: "工号",
+      dataIndex: "workId",
+      key: "workId",
+      width: "20%",
       render: (text, record) => {
         if (record.editable) {
-          return (
-            <Input
-              value={text}
-              placeholder="工号"
-            />
-          );
+          return <Input value={text} placeholder="工号" />;
         }
         return text;
       },
     },
     {
-      title: '所属部门',
-      dataIndex: 'department',
-      key: 'department',
-      width: '40%',
+      title: "所属部门",
+      dataIndex: "department",
+      key: "department",
+      width: "40%",
       render: (text, record) => {
         if (record.editable) {
-          return (
-            <Input
-              value={text}
-              placeholder="所属部门"
-            />
-          );
+          return <Input value={text} placeholder="所属部门" />;
         }
         return text;
       },
     },
     {
-      title: '操作',
-      key: 'action',
+      title: "操作",
+      key: "action",
       render: (text, record) => {
         const { loading } = this.state;
         if (!!record.editable && loading) {
@@ -123,7 +105,7 @@ function App() {
           if (record.isNew) {
             return (
               <span>
-                <a onClick={e => this.saveRow(e, record.key)}>保存</a>
+                <a>保存</a>
                 <Divider type="vertical" />
                 <Popconfirm title="是否要删除此行？">
                   <a>删除</a>
@@ -133,15 +115,15 @@ function App() {
           }
           return (
             <span>
-              <a onClick={e => this.saveRow(e, record.key)}>保存</a>
+              <a>保存</a>
               <Divider type="vertical" />
-              <a onClick={e => this.cancel(e, record.key)}>取消</a>
+              <a>取消</a>
             </span>
           );
         }
         return (
           <span>
-            <a onClick={e => this.toggleEditable(e, record.key)}>编辑</a>
+            <a>编辑</a>
             <Divider type="vertical" />
             <Popconfirm title="是否要删除此行？">
               <a>删除</a>
@@ -350,8 +332,8 @@ function App() {
                   >
                     <TimePicker
                       placeholder="提醒时间"
-                      style={{ width: '100%' }}
-                      getPopupContainer={trigger => trigger.parentNode}
+                      style={{ width: "100%" }}
+                      getPopupContainer={(trigger) => trigger.parentNode}
                     />
                   </Form.Item>
                 </Col>
@@ -382,12 +364,9 @@ function App() {
           <div className="m-5"></div>
           <Card title="成员管理" bordered={false}>
             <Fragment>
-              <Table
-                columns={columns}
-                pagination={false}
-              />
+              <Table columns={columns} pagination={false} />
               <Button
-                style={{ width: '100%', marginTop: 16, marginBottom: 8 }}
+                style={{ width: "100%", marginTop: 16, marginBottom: 8 }}
                 type="dashed"
                 // icon="plus"
               >
